@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message by உன்னவன்</title>
+     <style>
+      * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100dvh;
+  perspective: 1000px;
+  font: 1em/1.4 "Poppins", sans-serif;
+  overflow: hidden;
+  color: hsl(180 68% 5%);
+  background-image: radial-gradient(
+      circle farthest-corner at 50% 50%,
+      hsl(187 20% 88%) 30%,
+      hsl(149 20% 94%) 100%
+  );
+}
+
+.book {
+  position: relative;
+  display: flex;
+  margin: auto;
+  width: 42cqmin; /* Increased width */
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: translate 1s;
+  translate: calc(min(var(--c), 1) * 50%) 0%;
+  rotate: 1 0 0 30deg;
+}
+
+.page {
+  --thickness: 4;
+  flex: none;
+  display: flex;
+  width: 100%;
+  font-size: 2.2cqmin; /* Slightly increased font size */
+  pointer-events: all;
+  user-select: none;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1s,
+      rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
+  translate: calc(var(--i) * -100%) 0px 0px;
+  transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 0.23cqmin)));
+  rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
+}
+
+.front,
+.back {
+  position: relative;
+  flex: none;
+  width: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background-color: #fff;
+  translate: 0px;
+}
+
+.back {
+  translate: -100% 0;
+  rotate: 0 1 0 180deg;
+}
+
+.book {
+  counter-reset: page -1;
+}
+
+.book a {
+  color: inherit;
+}
+
+.page {
+  box-shadow: 0em 0.5em 1em -0.2em #00000020;
+}
+
+.front,
+.back {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  padding: 2em;
+  border: 1px solid #0002;
+}
+
+.front:has(img),
+.back:has(img) {
+  padding: 0;
+}
+
+.front img,
+.back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.front::after,
+.back::after {
+  position: absolute;
+  bottom: 1em;
+  counter-increment: page;
+  content: counter(page) ".";
+  font-size: 0.8em;
+}
+
+.cover::after {
+  content: "";
+}
+
+.front::after {
+  right: 1em;
+}
+
+.front {
+  background: linear-gradient(to left, #f7f7f7 80%, #eee 100%);
+  border-radius: 0.1em 0.5em 0.5em 0.1em;
+}
+
+.back::after {
+  left: 1em;
+}
+
+.back {
+  background-image: linear-gradient(to right, #f7f7f7 80%, #eee 100%);
+  border-radius: 0.5em 0.1em 0.1em 0.5em;
+}
+
+.cover {
+  background: radial-gradient(
+          circle farthest-corner at 80% 20%,
+          hsl(150 80% 20% / 0.3) 0%,
+          hsl(170 60% 10% / 0.1) 100%
+      ),
+      hsl(231, 32%, 29%) url("./cover.jpg") 50% / cover;
+  color: hsl(0, 100%, 30%); /* Dark red text color for cover page */
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 1px;
+  color: hsl(0, 100%, 30%); /* Dark red heading color */
+}
+
+p {
+  margin-top: 1px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: hsl(0, 100%, 30%); /* Dark red text color for paragraphs */
+}
+
+.front,
+.back {
+  padding: 1.5em;
+  color: hsl(0, 100%, 30%); /* Dark red text color for front and back pages */
+}
+
+.book {
+  width: 40cqmin; /* Slightly increased width */
+}
+
+.page {
+  font-size: 2cqmin; /* Slightly increased font size */
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+.front,
+.back {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1.5em;
+}
+.front.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Pushes content to the bottom */
+  padding: 2em;
+  min-height: 100%;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+p {
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100dvh;
+  perspective: 1000px;
+  font: 1em/1.4 "Poppins", sans-serif;
+  overflow: hidden;
+  color: hsl(180 68% 5%);
+  background: linear-gradient(to right, #000000, #2b2628, #100e0f);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Emoji Animation */
+.emoji {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0;
+  animation: floatEmojis 6s ease-in-out infinite;
+}
+
+@keyframes floatEmojis {
+  0% {
+    transform: translateY(100px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100px) rotate(20deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 1;
+  }
+}
+
+/* Add random timing for each emoji */
+.emoji:nth-child(1) {
+  animation-delay: 0s;
+  left: 10%;
+}
+.emoji:nth-child(2) {
+  animation-delay: 1s;
+  left: 20%;
+}
+.emoji:nth-child(3) {
+  animation-delay: 2s;
+  left: 30%;
+}
+.emoji:nth-child(4) {
+  animation-delay: 3s;
+  left: 40%;
+}
+.emoji:nth-child(5) {
+  animation-delay: 4s;
+  left: 50%;
+}
+.emoji:nth-child(6) {
+  animation-delay: 5s;
+  left: 60%;
+}
+.emoji:nth-child(7) {
+  animation-delay: 6s;
+  left: 70%;
+}
+.emoji:nth-child(8) {
+  animation-delay: 7s;
+  left: 80%;
+}
+.emoji:nth-child(9) {
+  animation-delay: 8s;
+  left: 90%;
+}
+
+
+     </style>
+  </head>
+  <body>
+    <div class="book">
+      <div class="page">
+        <div class="front cover">
+          <h1
+            style="
+              color: rgb(255, 255, 255);
+              text-shadow: 5px 2px 5px rgb(0, 0, 0);
+            "
+          >
+          Happy Valentine’s Day My Love! ❤️🌹
+          </h1>
+
+          <p
+            style="
+              color: rgb(255, 255, 255);
+              text-shadow: 5px 2px 5px rgb(0, 0, 0);
+            "
+          >
+          On this beautiful day, I just want to say—I am yours, always and forever. You are not just my love, you are my heart, my soul, and my everything. 💞<br />என்றும் உன்னுடன் Baby! 😘💖
+          </p>
+        </div>
+        <div class="back">
+          <h2>A Special Beginning ❤️✨</h2>
+
+       <p>
+        Four years ago, I met someone very special—you. 💖 Back then, we were just two strangers in the same place, not knowing what life had planned for us. I still remember the first time I saw you—your bright smile, your beautiful eyes, and the way you walked with confidence. ✨ I didn’t know that moment would change my life forever. As days passed, I started noticing you more, and my heart felt different. 💕 I was not sure if it was love, but I knew you were special. Slowly, my heart started racing every time I saw you. I wanted to know you, talk to you, and be near you. Little did I know, you would become the most important part of my life. 🥰 You made even the simplest moments feel magical. Every time I saw you, my day felt brighter. Life felt different after you came into it. 🌷
+
+
+       </p>
+
+          
+         
+        </div>
+      </div>
+      <!--2nd page-->
+      <div class="page">
+        <div class="front">
+          <h2>💘 My First Crush 💕    </h2>
+          <p>
+            At first, I didn’t understand what I felt for you. But every time I saw you, my heart beat faster. 💓 I waited to see you, even if it was just for a second. Your voice, your laughter, and the way you talked made my day brighter. 🌸 I wanted to talk to you, but I was scared. What if you didn’t feel the same way? What if you didn’t even notice me? But still, I couldn’t stop thinking about you. I started finding reasons to be near you, hoping you would see me too. I didn’t know when it happened, but my simple crush had turned into something more. 💖 My heart was no longer in my control. I started dreaming about you, thinking about you all the time. Every little thing you did made me fall for you even more. You became the reason for my happiness. 🌷
+
+          </div>
+        <div class="back">
+          <img src="./1.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--3rd page-->
+      <div class="page">
+        <div class="front">
+          <h2>🌙 Falling in Love ❤️
+          </h2>
+          <p>
+            The first time I saw you, I felt something special. 💕 But you were my senior, so I didn’t tell anyone. Every day, I looked at you from far, hoping you would notice me. 😌 I loved your smile, the way you talked, and everything about you. But I thought you would never see me like that. Time passed, and we became friends. 🌸 From just friends, we became close friends. We talked more, shared our thoughts, and spent time together. Then one day, something magical happened—you told me your feelings first! ❤️ I couldn’t believe it. That moment, my heart knew we were meant to be. Since that day, we have been together, and I have loved you more every single day. 💖
+
+
+
+          </p>
+        </div>
+        <div class="back">
+          <h2>🥰 Two Beautiful Years Together 💑</h2>
+          <p>
+            Now, we have been in love for two years. Every day with you is a new memory. We laugh, we fight, but at the end of the day, we love each other more. 💕 You have many names in my heart—Ammu, Thakkali, Duck, Baby, Bujjikutyyy, Mental, Kuttyma. 🥰 Each name has a story, and each story is special. No matter what happens, we always find a way back to each other. These two years have been the best part of my life. And I know, many more beautiful years are waiting for us. 💖 Every festival, every birthday, every special day became even more beautiful with you. You are not just my lover—you are my best friend, my happiness, my everything. Thank you for being mine. 🥰
+          </p>
+        </div>
+      </div>
+      <!--4th page-->
+      <div class="page">
+        <div class="front">
+          <h2>💞 Love and Fights, But Always Together ❤️
+          </h2>
+          <p>
+            We fight, we get angry, we stop talking. But after every fight, we come back to each other. 🤗 That is what love is. No matter how big or small the problem is, we never let it break us. You are my safe place, my happiness, and my best friend. 🌸 When I am sad, you bring a smile to my face. When I am happy, you make it even better. Love is not about being perfect, but about staying together. And I promise, I will always be with you. ❤️ Our love is like a small flame that never goes out, no matter how strong the wind is. Every fight only makes our love stronger. At the end of the day, we know that nothing in this world can separate us. Because we are meant to be. 💖
+
+
+          </p>
+        </div>
+        <div class="back">
+          <img src="./2.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--5th page-->
+      <div class="page">
+        <div class="front">
+          <h1>💌 A Promise for Forever 🌹
+          </h1>
+          <p>
+            My love for you is not just for today, it is forever. 💞 I want to be with you in every moment, in happiness and in sadness. I will hold your hand and never let go. 🤝 You are my first love, my best love, and my last love. No matter where life takes us, I will always choose you. Let’s make more memories, laugh more, love more, and stay together forever. 💖 No matter how hard life gets, I will stand by your side. I will always protect you, care for you, and love you with all my heart. You are my world, my everything. One day, I hope we look back at this letter and smile, knowing that our love only grew stronger with time. 💖
+
+
+          </p>
+        </div>
+        <div class="back">
+          <h1>Always Here for You 💖✨</h1>
+          <p>
+            No matter what happens, I will always be with you. 🤞💕 Life is not always easy, but you don’t have to face it alone. I will stand by your side in happy times and sad times. When you smile, I smile. 😊 When you are sad, I will hold your hand and make you feel better. You are not just my love; you are my best friend, my happiness, and my peace. 💖 Even when we fight, I can never stay away from you for long. You are too special to me. I promise to support you, love you, and be there for you always. No matter where life takes us, my heart will always belong to you. ❤️✨
+
+
+          </p>
+        </div>
+      </div>
+      <!--6th page-->
+      <div class="page">
+        <div class="front">
+          <h2>The Beauty of You ✨💖</h2>
+          <p>
+            You are the most beautiful person I have ever seen. 😍 But it’s not just your face—it’s your heart, your kindness, and the way you love me. ❤️ Your smile makes my day brighter, and your voice is the sweetest music to my ears. 🎶 You have a way of making simple moments feel magical. I love the way you care for me, the way you understand me without words. You are not just beautiful outside, but inside too. 💖 I still can’t believe someone as amazing as you is mine. Every time I look at you, I feel lucky. You are my angel, my love, my everything. 💕
+
+
+          </p>
+        </div>
+        <div class="back">
+          <h2>You're my only mine😘</h2>
+          <p>
+            You are my love, my life, my everything. ❤️ No one in this world can take your place in my heart. I love the way you call me with cute names, and I love calling you Ammu, Thakkali, Duck, Baby, Bujjikutyy, Mental, Kuttyma. 😘💕 Every little thing about you makes me happy. The way you get angry, the way you laugh, the way you hold my hand—it all belongs to me. 🤗 Even when we fight, I know we will always come back to each other because our love is strong. 💖 No matter where life takes us, my heart will beat only for you. You are my one and only, forever and always. ❤️🔥
+
+
+          </p>
+        </div>
+      </div>
+      <!--7th page-->
+      <div class="page">
+        <div class="front">
+          <h2>Grateful for You🌹❤</h2>
+          <p>
+            Every day, I thank God for giving me you. 🙏 You are the best thing that has ever happened to me. 💖 Before you, my life was simple, but after you, it became beautiful. You gave me love, care, and happiness. ❤️ I love the way you listen to me, the way you support me, and the way you make me feel special. Life is not perfect, but with you, it feels perfect. I will cherish you forever and never let you go. 🤞💕 I don’t need anything else in this world if I have you by my side. You are my greatest gift, and I will love you always. ❤️🌹
+
+
+          </p>
+        </div>
+        <div class="back">
+          <h2>Loveeee youuu diiiii Chlooo ❤️✨</h2>
+          <p>முதல் பார்வையிலேயே வந்த காதலை, நான் எப்படி புரியவைப்பது என்று நானும் தயங்கி நின்றேன்!
+            என்றோ ஒரு நாள் நீ புரிவாய் என்று அர்த்தம் சொல்ல...
+            ஆமாம், அந்த நாளோ இரண்டு வருடம் கழித்து வந்தது!
+            அந்த நாள்தான் என் வாழ்வில் முக்கியமான நாள்!
+            என்னென்றால் அது இல்லையென்றால், இன்று நீயாரோ, நானும் யாரோ! 💖<br>
+ 
+            உன் கண்கள் பார்த்த நாள், என் இதயம் விழுந்தது,
+உன் சிரிப்பு கேட்ட நாள், என் ஆனந்தம் மலர்ந்தது.
+நாம் சேர்ந்த இரண்டு ஆண்டுகள், காதல் கனிந்த நாட்கள்,
+உன்னை நினைத்த கணமே, என் உலகம் முழுவதும் நீயாகிறாய்.
+என்றும் உன் காதலனாக, உன் அன்பில் வாழ்ந்திடுவேன். 💞
+          </p>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="front">
+          <img src="./4.jpg" alt="Img 1" />
+        </div>
+        <div class="back cover">
+          <h3>My World</h3>
+          <p>
+            Content:By "உன்னவன்" 💖
+
+
+
+
+
+
+
+<br /><a
+              href=""
+              target="_blank"
+              rel="nofollow"></a>
+
+            <br />
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="emoji">❤️‍🔥</div>
+<div class="emoji">🫶🏻</div>
+<div class="emoji">❤️</div>
+<div class="emoji">😘</div>
+<div class="emoji">👨‍❤️‍💋‍👨</div>
+<div class="emoji">💓</div>
+<div class="emoji">❣️</div>
+<div class="emoji">💘</div>
+<div class="emoji">💖</div>
+<div class="emoji">💙</div>
+<div class="emoji">💚</div>
+<div class="emoji">🥰</div>
+<div class="emoji">💗</div>
+
+<script>
+  const flipBook = (elBook) => {
+    elBook.style.setProperty("--c", 0); // Set current page
+    elBook.querySelectorAll(".page").forEach((page, idx) => {
+      page.style.setProperty("--i", idx);
+      page.addEventListener("click", (evt) => {
+        if (evt.target.closest("a")) return;
+        const curr = evt.target.closest(".back") ? idx : idx + 1;
+        elBook.style.setProperty("--c", curr);
+      });
+    });
+  };
+  
+  document.querySelectorAll(".book").forEach(flipBook);
+  
+</script>
+ 
+  </body>
+</html>
+
